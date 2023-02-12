@@ -18,21 +18,9 @@ Após a instalação, remover a pasta `.git` de `front-mobile`.
 rm -rf .git
 ```
 
-# Pré-requisitos
+# Pré-requisitos e dependências
 
-## Instalação das seguintes ferramentas no Linux (Ubuntu/Debian)
-
-- expo-cli
-- @react-navigation/stack
-- @react-native-community/masked-view
-- react-native-screens
-- react-native-gesture-handler
-- @react-navigation/native
-- expo-app-loading
-- @expo-google-fonts/open-sans
-- expo-font
-- dayjs
-- intl
+Estão descritos no pacjage.json.
 
 # Instalação (com expo e npm)
 
@@ -41,19 +29,6 @@ rm -rf .git
 ```bash 
 npm install --global expo-cli
 expo install expo-app-loading @expo-google-fonts/open-sans expo-font
-```
-
-## Dependências do React
-
-```bash 
-expo install @react-navigation/stack @react-native-community masked-view  react-native-screens  react-native-gesture-handler  @react-navigation/native 
-```
-
-## Dependências adicionais
-
-```bash 
-npm install dayjs --save
-npm install intl
 ```
 
 # Execução
