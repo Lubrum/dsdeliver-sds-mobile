@@ -20,15 +20,14 @@ rm -rf .git
 
 # Pré-requisitos e dependências
 
-Estão descritos no pacjage.json.
+Estão descritos no package.json.
+
+Na raíz do projeto é necessário um arquivo .env com a variável EXPO_PUBLIC_API_URL. Nela, atribuir o IP do serviço de entregas de restaurante. Os detalhes do serviço podem ser encontrados neste [link (sds-deliver-backend)](https://github.com/Lubrum/dsdeliver-sds-backend).
 
 # Instalação (com expo e npm)
 
-## O expo-cli e dependências do expo
-
 ```bash 
 npm install --global expo-cli
-expo install expo-app-loading @expo-google-fonts/open-sans expo-font
 ```
 
 # Execução
