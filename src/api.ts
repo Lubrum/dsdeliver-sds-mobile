@@ -1,10 +1,11 @@
 import axios from "axios"
-import { API_URL } from '@env';
+
+const EXPO_PUBLIC_API_URL = process.env.EXPO_PUBLIC_API_URL;
 
 export function fetchOrders() {
-    return axios(`${API_URL}/orders`)
+    return axios(`${EXPO_PUBLIC_API_URL}/orders`)
 }
 
 export function confirmDelivery(orderId: number) {
-    return axios.put(`${API_URL}/orders/${orderId}/delivered`)
+    return axios.put(`${EXPO_PUBLIC_API_URL}/orders/${orderId}/delivered`)
 }
