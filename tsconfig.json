@@ -10,7 +10,9 @@
     "noEmit": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "strict": true
+    "strict": true,
+    "module": "commonjs",
+    "typeRoots": ["./types"] 
   },
   "extends": "expo/tsconfig.base"
 }

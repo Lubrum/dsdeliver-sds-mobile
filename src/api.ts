@@ -1,7 +1,5 @@
 import axios from "axios"
-
-//const API_URL = 'https://luciano-sds2.herokuapp.com'
-const API_URL = 'http://192.168.100.17:8201'
+import { API_URL } from '@env';
 
 export function fetchOrders() {
     return axios(`${API_URL}/orders`)
