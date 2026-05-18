@@ -27,7 +27,7 @@
     "react-native-screens": "~4.10.0",
     "react-native-web": "^0.20.0",
     "set-value": "4.1.0",
-    "ws": "8.18.2"
+    "ws": "8.20.1"
   },
   "devDependencies": {
     "@babel/core": "^7.27.1",
