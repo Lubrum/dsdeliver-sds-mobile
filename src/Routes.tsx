@@ -4,8 +4,9 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Home from "./Home";
 import Orders from "./Orders";
 import OrderDetails from "./OrderDetails";
+import { RootStackParamList } from './navigation';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParamList>();
 
 export default function Routes() {
     return (

@@ -1,34 +1,26 @@
 import React from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, Text, View, Alert, Linking } from 'react-native';
-import { RectButton } from 'react-native-gesture-handler';
+import { StyleSheet, Text, View, Alert, Linking, Pressable } from 'react-native';
+import { StackScreenProps } from '@react-navigation/stack';
 import Header from '../Header';
-import { Order } from '../types';
 import OrderCard from '../OrderCard';
 import { confirmDelivery } from '../api';
+import { RootStackParamList } from '../navigation';
 
-type Props = {
-    route: {
-        params: {
-            order: Order;
-        }
-    }
-}
+type Props = StackScreenProps<RootStackParamList, 'OrderDetails'>;
 
-export default function OrderDetails({route}: Props) {
+export default function OrderDetails({route, navigation}: Props) {
 
     const { order } = route.params
-    const navigation = useNavigation();
 
     const handleOnCancel = () => {
-        navigation.navigate('Orders' as never)
+        navigation.navigate('Orders')
     }
     
     const handleConfirmDelivery = () => {
         confirmDelivery(order.id)
             .then(() => {
                 Alert.alert(`Pedido ${order.id} confirmado com sucesso!`)
-                navigation.navigate('Orders' as never);
+                navigation.navigate('Orders');
             })
             .catch(() => {
                 Alert.alert(`Houve um erro ao confirmar o pedido ${order.id}`)
@@ -44,15 +36,15 @@ export default function OrderDetails({route}: Props) {
         <Header />
             <View style={styles.container}>
                 <OrderCard order={order} />
-                <RectButton style={styles.button} onPress={handleStartNavigation}>
+                <Pressable style={styles.button} onPress={handleStartNavigation}>
                     <Text style={styles.buttonText}>INICIAR NAVEGAÇÃO</Text>
-                </RectButton>
-                <RectButton style={styles.button} onPress={handleConfirmDelivery}>
+                </Pressable>
+                <Pressable style={styles.button} onPress={handleConfirmDelivery}>
                     <Text style={styles.buttonText}>CONFIRMAR ENTREGA</Text>
-                </RectButton>
-                <RectButton style={styles.button} onPress={handleOnCancel}>
+                </Pressable>
+                <Pressable style={styles.button} onPress={handleOnCancel}>
                     <Text style={styles.buttonText}>CANCELAR</Text>
-                </RectButton>
+                </Pressable>
             </View>
         </>
     );

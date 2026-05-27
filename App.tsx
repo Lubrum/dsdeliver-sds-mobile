@@ -1,11 +1,12 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useFonts, OpenSans_400Regular, OpenSans_700Bold } from '@expo-google-fonts/open-sans';
 import * as SplashScreen from 'expo-splash-screen';
 import Routes from './src/Routes';
 
-SplashScreen.preventAutoHideAsync();
+void SplashScreen.preventAutoHideAsync();
 
 export default function App() {
 
@@ -13,14 +14,6 @@ export default function App() {
     OpenSans_400Regular,
     OpenSans_700Bold
   });
-
-  useEffect(() => {
-    async function prepare() {
-      SplashScreen.preventAutoHideAsync();
-    }
-
-    prepare();
-  }, []);
 
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
@@ -33,12 +26,15 @@ export default function App() {
   }
 
   return (
-    <View 
-    style={styles.container}
-    onLayout={onLayoutRootView}>
-      <StatusBar style="auto" />
-      <Routes />
-    </View>
+    <GestureHandlerRootView style={styles.container}>
+      <View
+        style={styles.container}
+        onLayout={onLayoutRootView}
+      >
+        <StatusBar style="auto" />
+        <Routes />
+      </View>
+    </GestureHandlerRootView>
   );
 }
 

@@ -1,15 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import { RectButton } from 'react-native-gesture-handler';
+import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import Header from '../Header';
+import { RootStackParamList } from '../navigation';
 
 export default function Home() {
 
-    const navigation = useNavigation();
+    const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
     const handleOnPress = () => {
-        navigation.navigate('Orders' as never)
+        navigation.navigate('Orders')
     }
 
     return (
@@ -24,9 +25,9 @@ export default function Home() {
                 </Text>
             </View>
             <View style={styles.footer}>
-                <RectButton style={styles.button} onPress={handleOnPress}>
+                <Pressable style={styles.button} onPress={handleOnPress}>
                     <Text style={styles.buttonText}>VER PEDIDOS</Text>
-                </RectButton>
+                </Pressable>
             </View>
         </>
     );

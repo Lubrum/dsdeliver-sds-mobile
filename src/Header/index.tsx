@@ -1,23 +1,24 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
+import { RootStackParamList } from '../navigation';
 
 export default function Header() {
 
-    const navigation = useNavigation();
+    const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
     const handleOnPress = () => {
-        navigation.navigate('Home' as never)
+        navigation.navigate('Home')
     }
     
     return (
-        <TouchableWithoutFeedback onPress={handleOnPress}>
+        <Pressable onPress={handleOnPress}>
             <View style={styles.container}>
                 <Image source={require('../assets/logo.png')} />
                 <Text style={styles.text}>DS Delivery</Text>
             </View>
-        </TouchableWithoutFeedback>
+        </Pressable>
     );
 }
 

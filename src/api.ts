@@ -1,11 +1,27 @@
-import axios from "axios"
+import { Order } from './types';
 
 const EXPO_PUBLIC_API_URL = process.env.EXPO_PUBLIC_API_URL;
 
-export function fetchOrders() {
-    return axios(`${EXPO_PUBLIC_API_URL}/orders`)
+async function request<T>(path: string, init?: RequestInit): Promise<T> {
+    const response = await fetch(`${EXPO_PUBLIC_API_URL}${path}`, init);
+
+    if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+    }
+
+    return response.json() as Promise<T>;
 }
 
-export function confirmDelivery(orderId: number) {
-    return axios.put(`${EXPO_PUBLIC_API_URL}/orders/${orderId}/delivered`)
+export function fetchOrders() {
+    return request<Order[]>('/orders');
+}
+
+export async function confirmDelivery(orderId: number) {
+    const response = await fetch(`${EXPO_PUBLIC_API_URL}/orders/${orderId}/delivered`, {
+        method: 'PUT'
+    });
+
+    if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+    }
 }
